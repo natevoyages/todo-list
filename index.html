@@ -4,13 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App</title>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Todo App</h1>
+    </header>
+    <nav>
+        <ul>
+            <li id="daily">Daily</li>
+            <li id="weekly">Weekly</li>
+            <li id="monthly">Monthly</li>
+        </ul>
+    </nav>
     <main>
-    <div id="content"></div>
+        <div id="content-title">
+            <h2>Todo</h2>
+            <button id="add-todo">+</button>
+        </div>
+        <div id="content">
+        </div>
     </main>
+    <form id="pop-up-module" action="post">
+        <ul id="form-content">
+            <li>
+                <legend>Add Todo</legend>
+            </li>
+            <li>
+                <label for="title">Title:</label>
+                <input class="title-input" type="text" id="title" name="title">
+            </li>
+            <li>
+                <label for="description">Description:</label>
+                <input class="description-input" type="text" id="description" name="description">
+            </li>
+            <li>
+                <label for="priority">Priority:</label>
+                <select class="priority-input" id="priority" name="priority">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                </select>
+            </li>
+            <li>
+                <label for="Due-date">Due Date:</label>
+                <input class="Due-date-input" type="date" id="Due-date" name="Due-date">
+            </li>
+            <li>
+                <label class="notes-label" for="notes">Notes:</label>
+                <textarea class="notes-input" id="notes" name="notes" rows="10" cols="30"></textarea>
+            </li>
+        </ul>
+    </form>
     
 </body>
 </html>

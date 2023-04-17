@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #5286B1;
+  }
+nav > ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+}
+
+nav > ul > li{
+    margin-left: 2vh;
+}
+
+
+h2{
+    display: inline-block;
+}
+textarea{
+    resize: none;
+}
+
+.notes-label{
+    display: block;
+}
+#add-todo{
+    margin-left: 10px;
+    border-radius: 50px;
+    border-color: blue;
+    background-color: blue;
+    color: white;
+}
+#pop-up-module{
+    position: absolute;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+#form-content{
+    background-color: aliceblue;
+    width: 50vh;
+    height: 50vh;
+    list-style: none;
+}
+
+#form-content > li{
+    margin-top: 2%;
+
+}
