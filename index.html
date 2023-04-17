@@ -29,6 +29,7 @@
     </main>
     <form id="pop-up-module" action="post">
         <ul id="form-content">
+            <button class="form-close-btn">x</button>
             <li>
                 <legend>Add Todo</legend>
             </li>
@@ -49,12 +50,15 @@
                 </select>
             </li>
             <li>
-                <label for="Due-date">Due Date:</label>
-                <input class="Due-date-input" type="date" id="Due-date" name="Due-date">
+                <label for="due-date">Due Date:</label>
+                <input class="Due-date-input" type="date" id="due-date" name="due-date">
             </li>
             <li>
                 <label class="notes-label" for="notes">Notes:</label>
                 <textarea class="notes-input" id="notes" name="notes" rows="10" cols="30"></textarea>
+            </li>
+            <li>
+                <button class="form-submit">submit</button>
             </li>
         </ul>
     </form>
