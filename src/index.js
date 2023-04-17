@@ -1,4 +1,7 @@
 import createToDo from "./create-todo";
+import {addInitialListeners}from "./user-interface";
 
-let chores = createToDo("Clean", "Clean room", "today","high", "notes");
-console.log(chores);
+
+addInitialListeners();
+/*let chores = createToDo("Clean", "Clean room", "today","high", "notes");
+console.log(chores);*/
