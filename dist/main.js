@@ -1,0 +1,1 @@
+(()=>{"use strict";let e={title:"Clean",description:"Clean room",priority:"high",dueDate:"today",notes:"notes",done:!1};console.log(e)})();
