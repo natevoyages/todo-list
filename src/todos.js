@@ -1,3 +1,0 @@
-const todos = [];
-
-export {todos};

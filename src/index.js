@@ -1,4 +1,3 @@
-import createToDo from "./create-todo";
 import {addInitialListeners}from "./user-interface";
 
 

@@ -24,24 +24,10 @@ function getPriority(){
     return priority;
 }
 
-export {getNotes, getTitle, getDescription, getDueDate, getPriority}
-/*function getNote(obj, note){
-    obj.note = note;
+function getProjectName(){
+    let name = document.getElementById("project").value;
+    return name;
 }
 
-function getTitle(obj, title){
-    obj.title = title;
-}
 
-function getDescription(obj, description){
-    obj.description = description;
-}
-
-function getDueDate(obj, dueDate){
-    obj.dueDate = dueDate;
-}
-
-function getPriority(){
-    
-    return priority;
-}*/
+export {getNotes, getTitle, getDescription, getDueDate, getPriority, getProjectName}
