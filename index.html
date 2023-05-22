@@ -9,19 +9,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Todo App</h1>
-    </header>
     <nav>
+        <h1>Todo App</h1>
         <ul>
             <li id="daily">Daily</li>
             <li id="weekly">Weekly</li>
             <li id="monthly">Monthly</li>
         </ul>
+
+        <ul>
+            <ul id="projects">
+            </ul>
+            <li id="add-project-div">
+                <button id="add-project">+</button></li>
+            <li id="project-input">
+                <input type="text" name="project" id="project">
+                <button id="project-submit">submit</button>
+                <button id="project-cancel">cancel</button>
+            </li>
+        
+        </ul>
     </nav>
     <main>
         <div id="content-title">
-            <h2>Todo</h2>
+            <h2 id="content- header">Daily Todos</h2>
             <button id="add-todo">+</button>
         </div>
         <div id="content">

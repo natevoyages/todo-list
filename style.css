@@ -2,17 +2,23 @@ body{
     margin: 0;
     padding: 0;
     background-color: #5286B1;
+    display: flex;
+    height: 100vh;
+  }
+  nav{
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    max-width: 20vw;
+    border: 1px solid white;
+    border-left: none;
   }
 nav > ul {
     list-style-type: none;
-    display: flex;
     justify-content: space-between;
     width: 40vw;
 }
 
-nav > ul > li{
-    margin-left: 2vh;
-}
 
 
 h2{
@@ -25,7 +31,19 @@ textarea{
 .notes-label{
     display: block;
 }
-#add-todo{
+
+.todo{
+    display: flex;
+    border: 1px solid white;
+    font-size: 2rem;
+    justify-content: space-around;
+    width: 80vw;
+}
+#projects{
+    padding: 0px;
+}
+
+#add-todo, #add-project{
     margin-left: 10px;
     border-radius: 50px;
     border-color: blue;
@@ -52,4 +70,8 @@ textarea{
 #form-content > li{
     margin-top: 2%;
 
+}
+
+#project-input{
+    display: none;
 }
