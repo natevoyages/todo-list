@@ -1,21 +1,36 @@
 import { todoList } from "./todolist";
-function createProject(name)
-{
+
+let id = 0;
+
+function createProject(name){
   const tasks = [];
-  return {name, tasks};
+  id += 1;
+  return {name, tasks, id};
 }
 
 function addProject(){
   todoList.projects.push(createProject(prompt()));
 
 }
+
 function deleteProject(){
   let input = prompt();
-  let index = todoList.projects.findIndex(proj => proj.name == input);
+  let index = todoList.projects.findIndex(proj => proj.id == input);
   if(index != -1)
   {
   todoList.projects.splice(index, 1);
   }
 }
 
-export {createProject, addProject, deleteProject};
+function getProjectName(){
+  let name = document.getElementById("project").value;
+  return name;
+}
+
+function setProjectName(){
+  let input = prompt();
+  let index = todoList.projects.findIndex(proj => proj.id == input);
+  todoList.projects[index] = prompt;
+}
+
+export {createProject, addProject, deleteProject };

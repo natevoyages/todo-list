@@ -9,33 +9,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <h1>Todo App</h1>
-        <ul>
-            <li id="daily">Daily</li>
-            <li id="weekly">Weekly</li>
-            <li id="monthly">Monthly</li>
-        </ul>
-
-        <ul>
-            <ul id="projects">
-            </ul>
-            <li id="add-project-div">
-                <button id="add-project">+</button></li>
-            <li id="project-input">
-                <input type="text" name="project" id="project">
-                <button id="project-submit">submit</button>
-                <button id="project-cancel">cancel</button>
-            </li>
-        
-        </ul>
-    </nav>
+    <header>
+        <h1> <img src="./icons/todo.svg" alt="todo icon">Todo App</h1>
+    </header>
     <main>
-        <div id="content-title">
-            <h2 id="content- header">Daily Todos</h2>
-            <button id="add-todo">+</button>
-        </div>
+        <nav>
+            <ul>
+                <li id="today">
+                    <img src="./icons/today.svg" alt="calendar page icon">
+                     Today</li>
+             <li id="goals">
+            <img src="./icons/goal.svg" alt="goal icon">
+            <span>Goals<span>
+
+             </li>
+          </ul>
+
+          <ul>
+            <li>
+                <p>Projects</p>
+            </li>
+             <ul id="projects">
+             </ul>
+             <li id="add-project-div">
+                 <button id="add-project">+</button></li>
+             <li id="project-input">
+                 <input type="text" name="project" id="project">
+                 <div>
+                    <button id="project-submit">submit</button>
+                    <button id="project-cancel">cancel</button>
+                </div>
+             </li>
+        
+         </ul>
+        </nav>
         <div id="content">
+            <div id="content-title">
+                <h2 id="content- header">Daily Todos</h2>
+                <button id="add-todo">+</button>
+            </div>
         </div>
     </main>
     <form id="pop-up-module" action="post">
@@ -73,6 +85,9 @@
             </li>
         </ul>
     </form>
+    <footer>
+        <p>@natevoyages 2023</p>
+    </footer>
     
 </body>
 </html>

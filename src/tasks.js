@@ -1,15 +1,25 @@
 import { todoList } from "./todolist";
 let id = 0;
-function createTask(title, description, priority, dueDate, note, done)
-{
+
+function createTask(){
+  let title = getTitle();
+  let description = getDescription();
+  let priority = getPriority();
+  let dueDate = getDueDate();
+  let note = getNotes();
+  let done = false;
   id += 1;
   return {title, description, priority, dueDate, note, done, id}
 }
 
+function createDefaultTask(title, description, priority, dueDate, note, done = false){
+  id += 1;
+  return {title, description, priority, dueDate, note, done, id}
+}
 
 function addTask(){
-  let name = prompt("add task");
-  let index = todoList.projects.findIndex(proj => proj.name == name);
+  let projId = prompt("proj location");
+  let index = todoList.projects.findIndex(proj => proj.id == projId);
   todoList.projects[index].tasks.push(createTask());
 
 }
@@ -23,4 +33,29 @@ function deleteTask(){
   }
 }
 
-export {addTask, deleteTask};
+function getNotes(){
+  let notes = document.getElementById("notes").value;
+  return notes;
+}
+
+function getTitle(){
+   let title = document.getElementById("title").value;
+   return title;
+}
+
+function getDescription(){
+  let description = document.getElementById("description").value;
+  return description;
+}
+
+function getDueDate(){
+  let dueDate = document.getElementById("due-date").value;
+  return dueDate;
+}
+
+function getPriority(){
+  let priority = document.getElementById("priority").value;
+  return priority;
+}
+
+export {addTask, deleteTask,createDefaultTask, createTask};
