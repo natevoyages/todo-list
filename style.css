@@ -1,26 +1,55 @@
-body{
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #5286B1;
-    display: flex;
+    color: #ffffff;
+}
+body{
+    background-color: #060607;
     height: 100vh;
   }
+
+  header{
+    height: 64px;
+    background-color: #0000b3;
+  }
+main{
+    height: calc(100vh - 64px - 32px);
+    display: flex;
+}
   nav{
     display: flex;
     flex-direction: column;
     min-width: 200px;
-    max-width: 20vw;
-    border: 1px solid white;
+    max-width: 10vw;
+    border: 1px solid #725d8d;
+    background-color: #809fff;
     border-left: none;
   }
-nav > ul {
-    list-style-type: none;
-    justify-content: space-between;
-    width: 40vw;
+
+footer{
+    display: flex;
+    background-color: #0000b3;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
 }
 
+nav > ul {
+    margin: 1rem ;
+    list-style-type: none;
+}
+nav > li{
+    display: flex;
+    align-items: center;
+}
 
-
+ nav > ul > li >  img {
+    height: 1rem;
+}
+h1 > img{
+    height: 2rem;
+}
 h2{
     display: inline-block;
 }
@@ -39,6 +68,14 @@ textarea{
     justify-content: space-around;
     width: 80vw;
 }
+#today{
+    font-weight: bold;
+    background-color: #99b3ff;
+}
+#goals:hover{
+    background-color: #99b3ff;
+
+}
 #projects{
     padding: 0px;
 }
@@ -49,6 +86,10 @@ textarea{
     border-color: blue;
     background-color: blue;
     color: white;
+}
+
+#add-project-div{
+    text-align: center;
 }
 #pop-up-module{
     position: absolute;
@@ -74,4 +115,15 @@ textarea{
 
 #project-input{
     display: none;
+}
+#project-input > div{
+    display: flex;
+    flex: auto;
+}
+#project-input > div > button{
+    flex: auto;
+}
+
+#content{
+    flex: auto;
 }
