@@ -9,7 +9,7 @@ function createProject(name){
 }
 
 function addProject(){
-  todoList.projects.push(createProject(prompt()));
+  todoList.projects.push(createProject(getProjectName()));
 
 }
 

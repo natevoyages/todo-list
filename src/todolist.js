@@ -1,19 +1,21 @@
 import { createProject } from "./projects";
 import { createDefaultTask } from "./tasks";
+import {createProjectelement} from "./dom-controls";
 
 
 function createToDoList(){
   let projects = [];
   projects.push(createProject("Today"));
   projects.push(createProject("Goals"));
-  projects.push(createProject("Default"));
+  projects.push(createProject("Default Project"));
 
   return { projects }
 }
 
 
 const todoList = createToDoList();
-todoList.projects[2].tasks.push(createDefaultTask("title", "description", "priority", "dueDate", "note", false));
+todoList.projects[2].tasks.push(createDefaultTask("Web Devloper!", "Become a Web Devloper", "High", "dueDate", "SOON SOOON SOOOOOOOON", false));
+createProjectelement();
 
 
 export {todoList }

@@ -1,4 +1,7 @@
+import { createProjectelement } from "./dom-controls";
+import { addProject } from "./projects";
 import { todoList } from "./todolist";
+createProjectelement
 let currentPage = todoList.projects.at(0);
 function displayTodoList()
 {
@@ -21,6 +24,14 @@ function closeProjectForm(){
   btn.style.display = "inline";
   clearProjName();
 }
+
+function submitProject(){
+  addProject();
+  createProjectelement();
+  closeProjectForm();
+  clearProjName();
+}
+
 function addNavBarlisteners(){
   let projSubmitBtn = document.getElementById("project-submit");
   let projCancelBtn  = document.getElementById("project-cancel");
@@ -31,7 +42,7 @@ function addNavBarlisteners(){
 
   addProj.addEventListener('click', openProjectForm);
   projCancelBtn.addEventListener('click', closeProjectForm);
- // projSubmitBtn.addEventListener('click', submitProject); 
+  projSubmitBtn.addEventListener('click', submitProject); 
   daily.addEventListener('click', changePage);
   goals.addEventListener('click', changePage);
 
