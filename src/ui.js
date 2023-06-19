@@ -1,4 +1,4 @@
-import { createProjectelement } from "./dom";
+import { changePageContent, createProjectelement, createToDoElement } from "./dom";
 import { addProject } from "./projects";
 import { clearData, addTask } from "./tasks";
 import { todoList } from "./todolist";
@@ -11,21 +11,22 @@ import { todoList } from "./todolist";
 let currentPage = todoList.projects.at(0);
 let currentId = currentPage.id;
 
-
-
+function findCurrentPage(){  
+  let index = todoList.projects.findIndex(proj => proj.id == currentId)
+  return index;
+}
+//fix this?
+function findSelectedPage(selected){
+  let index = todoList.projects.findIndex(proj => proj.id == selected)
+  return index;
+}
 
 let i = 0;
 function addInitialListeners(){
     addNavBarlisteners();
+    addFormListeners();
     let addTodoBtn = document.getElementById("add-todo")
-    addTodoBtn.addEventListener('click', () =>{
-         openForm();
-         if (i== 0){
-            i++;
-         addFormListeners();
-        }
-    }
-         );
+    addTodoBtn.addEventListener('click',openForm);
 }
 
 function addFormListeners(){
@@ -73,10 +74,9 @@ function closeForm(){
    clearData();
 }
 
-// fix this
 function submitForm(){
    addTask();
-   //createToDoElement(todos);
+   createToDoElement();
    console.log(currentPage);
    closeForm();
 }
@@ -106,19 +106,32 @@ function changePage(event){
   if (event.target.id == "today"){
     if(currentPage != todoList.projects.at(0)){
         currentPage =  todoList.projects.at(0);
-        console.log(currentPage);
         document.getElementById("today").style.fontWeight = "normal";
         currentId = currentPage.id;
+        console.log(currentId);
+        console.log(currentPage)
+        changePageContent(currentPage);
     }
   }
   else if(event.target.id == "goals"){
     if(currentPage != todoList.projects.at(1)){
        currentPage = todoList.projects.at(1);
-       console.log(currentPage);
        document.getElementById("goals").style.fontWeight = "bold";
-       displayTodoList();
        currentId = currentPage.id;
+       changePageContent(currentPage);
        console.log(currentId);
+       console.log(currentPage)
+    }
+    else if(event.target["data-value"] != currentId && event.target.id != "goals" &&  event.target.id != "today")
+    {
+      indexProj = findSelectedPage(event.target["data-value"]);
+      currentPage = todoList.projects.at(indexProj);
+      console.log(currentPage);
+      currentId = currentPage.id;
+      document.querySelector(`[data-value=${currentId}]`).style.fontWeight = "bold";
+      console.log(currentId);
+      console.log(currentPage)
+      changePageContent(currentPage);
     }
   }
 
@@ -127,4 +140,4 @@ function clearProjName(){
   document.getElementById("project").value = "";
 }
 
-export {displayTodoList, addNavBarlisteners, currentId, addInitialListeners};
+export {displayTodoList, addNavBarlisteners, findCurrentPage, addInitialListeners, currentId};

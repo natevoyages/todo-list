@@ -1,6 +1,5 @@
 import { todoList } from "./todolist";
 import { currentId } from "./ui";
-currentId
 let id = 0;
 
 function createTask(){

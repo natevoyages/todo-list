@@ -21,7 +21,6 @@ function deleteProject(){
   todoList.projects.splice(index, 1);
   }
 }
-
 function getProjectName(){
   let name = document.getElementById("project").value;
   return name;

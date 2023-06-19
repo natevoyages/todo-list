@@ -1,21 +1,24 @@
 import { todoList} from "./todolist";
+import { findCurrentPage } from "./ui";
 
 function createProjectelement(){
     let li = document.createElement("li");
     li.setAttribute("class", "project");
     let projInfo = todoList.projects.at(todoList.projects.length - 1);
     li.innerText = projInfo.name;
+    li.setAttribute('data-value', projInfo.id);
     li.style.listStyle = "none";
     document.getElementById("projects").appendChild(li);
     console.log(projInfo);
 }
-/*
-//fix this
+
 function createToDoElement(){
     let div = document.createElement("div");
     div.setAttribute("class", "todo");
-    let objInfo = todos.at(todos.length - 1);
-    div.value = ; // fix this
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let task = tasks.at(tasks.length -1);
+    console.log("task: " + task);
+    div.setAttribute('data-value', task.id);
 
     let title =document.createElement("p");
     let description = document.createElement("p");
@@ -26,11 +29,11 @@ function createToDoElement(){
     let doneBtn = document.createElement("button");
     let btnDiv = document.createElement("div");
 
-    title.innerText =  objInfo.title;
-    description.innerText = objInfo.description;
-    priority.innerText = "Priority: " + objInfo.priority;
-    dueDate.innerText = "Date: " + objInfo.dueDate;
-    done.innerText = "Done:" + objInfo.done;
+    title.innerText = "Title: " +  task.title;
+    description.innerText = "Descrip: " + task.description;
+    priority.innerText = "Priority: " + task.priority;
+    dueDate.innerText = "Date: " + task.dueDate;
+    done.innerText = "Done:" + task.done;
     editBtn.innerText = "Edit";
     doneBtn.innerText = "Done?"
 
@@ -46,7 +49,19 @@ function createToDoElement(){
     div.appendChild(btnDiv);
     
 
+    document.getElementById("todos").appendChild(div);
+}
+function changePageContent(page){
+    let h2 = document.getElementById('content-header');
+    h2.innerText = page.name; 
+    deleteTodosDom();
+    let div = document.createElement("div");
+    div.setAttribute("id", "todos");
     document.getElementById("content").appendChild(div);
+
+}
+function deleteTodosDom(){
+    document.getElementById("todos").remove();
 }
 /*
 function loadTodos(todos){
@@ -93,4 +108,4 @@ function loadTodos(todos){
 */
 
 
-export {/*createToDoElement*/ createProjectelement};
+export {createToDoElement, createProjectelement, changePageContent};
