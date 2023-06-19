@@ -3,11 +3,6 @@ import { addProject } from "./projects";
 import { clearData, addTask } from "./tasks";
 import { todoList } from "./todolist";
 
-
-
-
-
-
 let currentPage = todoList.projects.at(0);
 let currentId = currentPage.id;
 

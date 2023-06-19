@@ -1,7 +1,6 @@
-
 import { todoList} from "./todolist";
 import { findCurrentPage, changePage } from "./ui";
-
+import { deleteTask } from "./tasks";
 
 function createProjectelement(){
     let li = document.createElement("li");
@@ -12,7 +11,20 @@ function createProjectelement(){
     li.style.listStyle = "none";
     document.getElementById("projects").appendChild(li);
     console.log(projInfo);
+    let btnDiv = document.createElement("div");
+    let doneBtn = document.createElement("img");
+    let editBtn = document.createElement("img");
+    editBtn.src = "../dist/icons/edit.svg";
+    doneBtn.src = "../dist/icons/delete.svg";
+    btnDiv.appendChild(editBtn);
+    btnDiv.appendChild(doneBtn);
+    btnDiv.style.display = "none";
+    btnDiv.style.height = "1rem";
+
+    li.appendChild(btnDiv);
     li.addEventListener('click',changePage);
+    li.addEventListener('mouseover', () => btnDiv.style.display = "flex" );
+    li.addEventListener('mouseleave', () => btnDiv.style.display = "none");
 }
 
 function createToDoElement(){
@@ -72,7 +84,7 @@ function deleteTodosDom(){
 function deleteTaskDom(event){
     let value = event.target.parentNode.parentNode.getAttribute('task-value');
     document.querySelector(`[task-value ="${value}"]`).remove();
-    //deleteTask(event.target.getAttribute("data-value"));
+    deleteTask(value);
 }
 
 function loadTodos(){

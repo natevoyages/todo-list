@@ -84,7 +84,13 @@ textarea{
 #projects{
     padding: 0px;
 }
-
+.project{
+    display: flex;
+    justify-content: space-between;
+}
+.project:hover{
+    background-color: #99b3ff;
+}
 #add-todo, #add-project{
     margin-left: 10px;
     border-radius: 50px;
