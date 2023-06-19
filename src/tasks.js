@@ -24,14 +24,11 @@ function addTask(){
   todoList.projects[index].tasks.push(createTask());
 
 }
-function deleteTask(){
-  let input = prompt("prj name");
-  let index = todoList.projects.findIndex(proj => proj.name == input);
-  if(index != -1)
-  {
-  let taskI = prompt("task id");
-  todoList.projects[index].tasks.splice(taskI, 1);
-  }
+function deleteTask(taskId){
+  let projId = currentId;
+  let index = todoList.projects.findIndex(proj => proj.id == projId);
+  let taskI = todoList.projects.at(index).tasks.findIndex(task => task.id == taskId);;
+  todoList.projects.at(index).tasks.splice(taskI, 1);
 }
 
 function getNotes(){

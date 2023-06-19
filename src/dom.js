@@ -1,5 +1,7 @@
+
 import { todoList} from "./todolist";
-import { findCurrentPage } from "./ui";
+import { findCurrentPage, changePage } from "./ui";
+
 
 function createProjectelement(){
     let li = document.createElement("li");
@@ -10,6 +12,7 @@ function createProjectelement(){
     li.style.listStyle = "none";
     document.getElementById("projects").appendChild(li);
     console.log(projInfo);
+    li.addEventListener('click',changePage);
 }
 
 function createToDoElement(){
@@ -17,16 +20,16 @@ function createToDoElement(){
     div.setAttribute("class", "todo");
     let tasks = todoList.projects.at(findCurrentPage()).tasks;
     let task = tasks.at(tasks.length -1);
-    console.log("task: " + task);
-    div.setAttribute('data-value', task.id);
+    div.setAttribute('task-value', task.id);
 
     let title =document.createElement("p");
     let description = document.createElement("p");
     let priority = document.createElement("p");
     let dueDate = document.createElement("p");
     let done = document.createElement("p");
-    let editBtn = document.createElement("button");
-    let doneBtn = document.createElement("button");
+    let readBtn = document.createElement("img");
+    let editBtn = document.createElement("img");
+    let doneBtn = document.createElement("img");
     let btnDiv = document.createElement("div");
 
     title.innerText = "Title: " +  task.title;
@@ -34,16 +37,18 @@ function createToDoElement(){
     priority.innerText = "Priority: " + task.priority;
     dueDate.innerText = "Date: " + task.dueDate;
     done.innerText = "Done:" + task.done;
-    editBtn.innerText = "Edit";
-    doneBtn.innerText = "Done?"
+    readBtn.src = "../dist/icons/read.svg";
+    editBtn.src = "../dist/icons/edit.svg";
+    doneBtn.src = "../dist/icons/delete.svg";
 
 
     div.appendChild(title);
-    div.appendChild(description);
     div.appendChild(priority);
     div.appendChild(dueDate);
-    div.appendChild(done);
 
+    doneBtn.addEventListener('click', deleteTaskDom)
+
+    btnDiv.appendChild(readBtn);
     btnDiv.appendChild(editBtn);
     btnDiv.appendChild(doneBtn);
     div.appendChild(btnDiv);
@@ -58,54 +63,64 @@ function changePageContent(page){
     let div = document.createElement("div");
     div.setAttribute("id", "todos");
     document.getElementById("content").appendChild(div);
+    loadTodos();
 
 }
 function deleteTodosDom(){
     document.getElementById("todos").remove();
 }
-/*
-function loadTodos(todos){
-    todos.array.forEach(todo => {
+function deleteTaskDom(event){
+    let value = event.target.parentNode.parentNode.getAttribute('task-value');
+    document.querySelector(`[task-value ="${value}"]`).remove();
+    //deleteTask(event.target.getAttribute("data-value"));
+}
+
+function loadTodos(){
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    tasks.forEach(task => {
         
     
-    let div = document.createElement("div");
-    div.setAttribute("class", "todo");
-    let objInfo = todo;
-    div.value = objInfo.index; // fix this
-
-    let title =document.createElement("p");
-    let description = document.createElement("p");
-    let priority = document.createElement("p");
-    let dueDate = document.createElement("p");
-    let done = document.createElement("p");
-    let editBtn = document.createElement("button");
-    let doneBtn = document.createElement("button");
-    let btnDiv = document.createElement("div");
-
-    title.innerText =  objInfo.title;
-    description.innerText = objInfo.description;
-    priority.innerText = "Priority: " + objInfo.priority;
-    dueDate.innerText = "Date: " + objInfo.dueDate;
-    done.innerText = "Done:" + objInfo.done;
-    editBtn.innerText = "Edit";
-    doneBtn.innerText = "Done?"
-
-
-    div.appendChild(title);
-    div.appendChild(description);
-    div.appendChild(priority);
-    div.appendChild(dueDate);
-    div.appendChild(done);
-
-    btnDiv.appendChild(editBtn);
-    btnDiv.appendChild(doneBtn);
-    div.appendChild(btnDiv);
+        let div = document.createElement("div");
+        div.setAttribute("class", "todo");
+        console.log("task: " + task);
+        div.setAttribute('task-value', task.id);
     
+        let title =document.createElement("p");
+        let description = document.createElement("p");
+        let priority = document.createElement("p");
+        let dueDate = document.createElement("p");
+        let done = document.createElement("p");
+        let readBtn = document.createElement("img");
+        let editBtn = document.createElement("img");
+        let doneBtn = document.createElement("img");
+        let btnDiv = document.createElement("div");
+    
+        title.innerText = "Title: " +  task.title;
+        description.innerText = "Descrip: " + task.description;
+        priority.innerText = "Priority: " + task.priority;
+        dueDate.innerText = "Date: " + task.dueDate;
+        done.innerText = "Done:" + task.done;
+        readBtn.src = "../dist/icons/read.svg";
+        editBtn.src = "../dist/icons/edit.svg";
+        doneBtn.src = "../dist/icons/delete.svg";
+    
+    
+        
+        div.appendChild(title);
+        div.appendChild(priority);
+        div.appendChild(dueDate);
 
-    document.getElementById("content").appendChild(div);
+        doneBtn.addEventListener('click', deleteTaskDom)
+    
+        btnDiv.appendChild(readBtn);
+        btnDiv.appendChild(editBtn);
+        btnDiv.appendChild(doneBtn);
+        div.appendChild(btnDiv);
+        
+    
+        document.getElementById("todos").appendChild(div);
     });
 }
-*/
 
 
-export {createToDoElement, createProjectelement, changePageContent};
+export {createToDoElement, createProjectelement, changePageContent, loadTodos, deleteTaskDom};

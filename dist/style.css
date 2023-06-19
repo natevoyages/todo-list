@@ -2,11 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #ffffff;
+
 }
 body{
     background-color: #060607;
     height: 100vh;
+    color: white;
   }
 
   header{
@@ -63,10 +64,14 @@ textarea{
 
 .todo{
     display: flex;
+    background-color: #0000b3;
     border: 1px solid white;
     font-size: 2rem;
     justify-content: space-around;
     width: 80vw;
+}
+.todo > div > img{
+    height: 2rem;
 }
 #today{
     font-weight: bold;
@@ -102,7 +107,8 @@ textarea{
     height: 100vh;
 }
 #form-content{
-    background-color: aliceblue;
+    background-color: white;
+    color: black;
     width: 50vh;
     height: 50vh;
     list-style: none;

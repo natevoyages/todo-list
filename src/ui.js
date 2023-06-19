@@ -1,4 +1,4 @@
-import { changePageContent, createProjectelement, createToDoElement } from "./dom";
+import { changePageContent, createProjectelement, createToDoElement, loadTodos } from "./dom";
 import { addProject } from "./projects";
 import { clearData, addTask } from "./tasks";
 import { todoList } from "./todolist";
@@ -115,29 +115,28 @@ function changePage(event){
   }
   else if(event.target.id == "goals"){
     if(currentPage != todoList.projects.at(1)){
+      console.log(event.target.id);
        currentPage = todoList.projects.at(1);
        document.getElementById("goals").style.fontWeight = "bold";
        currentId = currentPage.id;
        changePageContent(currentPage);
-       console.log(currentId);
-       console.log(currentPage)
     }
-    else if(event.target["data-value"] != currentId && event.target.id != "goals" &&  event.target.id != "today")
+  }
+  else if(event.target.getAttribute("data-value") != currentId && event.target.id != "goals" &&  event.target.id != "today")
     {
-      indexProj = findSelectedPage(event.target["data-value"]);
+      let indexProj = findSelectedPage(event.target.getAttribute("data-value"));
       currentPage = todoList.projects.at(indexProj);
       console.log(currentPage);
       currentId = currentPage.id;
-      document.querySelector(`[data-value=${currentId}]`).style.fontWeight = "bold";
+      document.querySelector(`[data-value ='${currentId}']`).style.fontWeight = "bold";
       console.log(currentId);
       console.log(currentPage)
       changePageContent(currentPage);
     }
-  }
 
 }
 function clearProjName(){
   document.getElementById("project").value = "";
 }
 
-export {displayTodoList, addNavBarlisteners, findCurrentPage, addInitialListeners, currentId};
+export {displayTodoList, addNavBarlisteners, findCurrentPage, addInitialListeners, currentId, changePage};
