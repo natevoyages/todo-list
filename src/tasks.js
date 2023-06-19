@@ -1,4 +1,6 @@
 import { todoList } from "./todolist";
+import { currentId } from "./ui";
+currentId
 let id = 0;
 
 function createTask(){
@@ -18,7 +20,7 @@ function createDefaultTask(title, description, priority, dueDate, note, done = f
 }
 
 function addTask(){
-  let projId = prompt("proj location");
+  let projId = currentId;
   let index = todoList.projects.findIndex(proj => proj.id == projId);
   todoList.projects[index].tasks.push(createTask());
 
@@ -58,4 +60,11 @@ function getPriority(){
   return priority;
 }
 
-export {addTask, deleteTask,createDefaultTask, createTask};
+function clearData(){
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("notes").value = "";
+  document.getElementById("due-date").value = "";
+  document.getElementById("priority").value = "Medium";
+}
+export {addTask, deleteTask,createDefaultTask, createTask, clearData};

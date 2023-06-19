@@ -1,6 +1,6 @@
 import { createProject } from "./projects";
 import { createDefaultTask } from "./tasks";
-import {createProjectelement} from "./dom-controls";
+import {createProjectelement} from "./dom";
 
 
 function createToDoList(){

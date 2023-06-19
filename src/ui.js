@@ -1,8 +1,44 @@
-import { createProjectelement } from "./dom-controls";
+import { createProjectelement } from "./dom";
 import { addProject } from "./projects";
+import { clearData, addTask } from "./tasks";
 import { todoList } from "./todolist";
-createProjectelement
+
+
+
+
+
+
 let currentPage = todoList.projects.at(0);
+let currentId = currentPage.id;
+
+
+
+
+let i = 0;
+function addInitialListeners(){
+    addNavBarlisteners();
+    let addTodoBtn = document.getElementById("add-todo")
+    addTodoBtn.addEventListener('click', () =>{
+         openForm();
+         if (i== 0){
+            i++;
+         addFormListeners();
+        }
+    }
+         );
+}
+
+function addFormListeners(){
+  let submitBtn = document.querySelector(".form-submit");
+  let closebtn = document.querySelector(".form-close-btn");
+
+
+  closebtn.addEventListener('click', (event) => {event.preventDefault();
+  closeForm();});
+  submitBtn.addEventListener('click', (event) => {event.preventDefault();
+  submitForm();}); 
+  
+}
 function displayTodoList()
 {
   console.log("Todo List");
@@ -25,6 +61,25 @@ function closeProjectForm(){
   clearProjName();
 }
 
+function openForm(){
+  let content = document.getElementById("pop-up-module");
+  content.style.display = "flex";
+}
+
+
+function closeForm(){
+   let content = document.getElementById("pop-up-module");
+   content.style.display = "none";
+   clearData();
+}
+
+// fix this
+function submitForm(){
+   addTask();
+   //createToDoElement(todos);
+   console.log(currentPage);
+   closeForm();
+}
 function submitProject(){
   addProject();
   createProjectelement();
@@ -53,6 +108,7 @@ function changePage(event){
         currentPage =  todoList.projects.at(0);
         console.log(currentPage);
         document.getElementById("today").style.fontWeight = "normal";
+        currentId = currentPage.id;
     }
   }
   else if(event.target.id == "goals"){
@@ -61,6 +117,8 @@ function changePage(event){
        console.log(currentPage);
        document.getElementById("goals").style.fontWeight = "bold";
        displayTodoList();
+       currentId = currentPage.id;
+       console.log(currentId);
     }
   }
 
@@ -69,4 +127,4 @@ function clearProjName(){
   document.getElementById("project").value = "";
 }
 
-export {displayTodoList, addNavBarlisteners};
+export {displayTodoList, addNavBarlisteners, currentId, addInitialListeners};

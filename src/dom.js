@@ -11,11 +11,11 @@ function createProjectelement(){
 }
 /*
 //fix this
-function createToDoElement(todos){
+function createToDoElement(){
     let div = document.createElement("div");
     div.setAttribute("class", "todo");
     let objInfo = todos.at(todos.length - 1);
-    div.value = objInfo.index; // fix this
+    div.value = ; // fix this
 
     let title =document.createElement("p");
     let description = document.createElement("p");
@@ -48,7 +48,7 @@ function createToDoElement(todos){
 
     document.getElementById("content").appendChild(div);
 }
-
+/*
 function loadTodos(todos){
     todos.array.forEach(todo => {
         
@@ -90,23 +90,7 @@ function loadTodos(todos){
     document.getElementById("content").appendChild(div);
     });
 }
-
-function clearData(){
-    document.getElementById("title").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("due-date").value = "";
-    document.getElementById("priority").value = "Medium";
-}
-
-function clearProjName(){
-    document.getElementById("project").value = "";
-}
-
-//fix this
-function changeTodo(event){
-
-    if (event);
-}
 */
-export {/*createToDoElement, clearData,*/ createProjectelement, /*clearProjName*/};
+
+
+export {/*createToDoElement*/ createProjectelement};
