@@ -1,6 +1,7 @@
 import { todoList} from "./todolist";
 import { findCurrentPage, changePage } from "./ui";
 import { deleteTask } from "./tasks";
+import { deleteProject } from "./projects";
 
 function createProjectelement(){
     let li = document.createElement("li");
@@ -13,13 +14,11 @@ function createProjectelement(){
     console.log(projInfo);
     let btnDiv = document.createElement("div");
     let doneBtn = document.createElement("img");
-    let editBtn = document.createElement("img");
-    editBtn.src = "../dist/icons/edit.svg";
     doneBtn.src = "../dist/icons/delete.svg";
-    btnDiv.appendChild(editBtn);
     btnDiv.appendChild(doneBtn);
     btnDiv.style.display = "none";
     btnDiv.style.height = "1rem";
+    doneBtn.addEventListener('click', deleteProjectDom);
 
     li.appendChild(btnDiv);
     li.addEventListener('click',changePage);
@@ -85,6 +84,11 @@ function deleteTaskDom(event){
     let value = event.target.parentNode.parentNode.getAttribute('task-value');
     document.querySelector(`[task-value ="${value}"]`).remove();
     deleteTask(value);
+}
+function deleteProjectDom(event){
+    let value = event.target.parentNode.parentNode.getAttribute('data-value');
+    document.querySelector(`[data-value ="${value}"]`).remove();
+    deleteProject(value);
 }
 
 function loadTodos(){

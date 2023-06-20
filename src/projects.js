@@ -13,23 +13,14 @@ function addProject(){
 
 }
 
-function deleteProject(){
-  let input = prompt();
-  let index = todoList.projects.findIndex(proj => proj.id == input);
-  if(index != -1)
-  {
+function deleteProject(value){
+  let index = todoList.projects.findIndex(proj => proj.id == value);
   todoList.projects.splice(index, 1);
-  }
+
 }
 function getProjectName(){
   let name = document.getElementById("project").value;
   return name;
-}
-
-function setProjectName(){
-  let input = prompt();
-  let index = todoList.projects.findIndex(proj => proj.id == input);
-  todoList.projects[index] = prompt;
 }
 
 export {createProject, addProject, deleteProject };

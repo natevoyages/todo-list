@@ -5,12 +5,13 @@ import { todoList } from "./todolist";
 
 let currentPage = todoList.projects.at(0);
 let currentId = currentPage.id;
+let previousId = currentId;
 
 function findCurrentPage(){  
   let index = todoList.projects.findIndex(proj => proj.id == currentId)
   return index;
 }
-//fix this?
+
 function findSelectedPage(selected){
   let index = todoList.projects.findIndex(proj => proj.id == selected)
   return index;
@@ -101,19 +102,21 @@ function changePage(event){
   if (event.target.id == "today"){
     if(currentPage != todoList.projects.at(0)){
         currentPage =  todoList.projects.at(0);
-        document.getElementById("today").style.fontWeight = "normal";
         currentId = currentPage.id;
-        console.log(currentId);
-        console.log(currentPage)
+        document.querySelector(`[data-value ='${previousId}']`).style.fontWeight = "normal";
+        document.getElementById("today").style.fontWeight = "bold";
+        previousId = currentId;
         changePageContent(currentPage);
     }
   }
   else if(event.target.id == "goals"){
     if(currentPage != todoList.projects.at(1)){
-      console.log(event.target.id);
        currentPage = todoList.projects.at(1);
-       document.getElementById("goals").style.fontWeight = "bold";
        currentId = currentPage.id;
+       console.log(previousId);
+       document.querySelector(`[data-value ='${previousId}']`).style.fontWeight = "normal";
+       document.getElementById("goals").style.fontWeight = "bold";
+       previousId = currentId;
        changePageContent(currentPage);
     }
   }
@@ -121,11 +124,10 @@ function changePage(event){
     {
       let indexProj = findSelectedPage(event.target.getAttribute("data-value"));
       currentPage = todoList.projects.at(indexProj);
-      console.log(currentPage);
       currentId = currentPage.id;
+      document.querySelector(`[data-value ='${previousId}']`).style.fontWeight = "normal";
       document.querySelector(`[data-value ='${currentId}']`).style.fontWeight = "bold";
-      console.log(currentId);
-      console.log(currentPage)
+      previousId = currentId;
       changePageContent(currentPage);
     }
 
