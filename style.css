@@ -75,9 +75,8 @@ textarea{
 }
 #today{
     font-weight: bold;
-    background-color: #99b3ff;
 }
-#goals:hover{
+#goals:hover, #today:hover{
     background-color: #99b3ff;
 
 }
