@@ -85,15 +85,42 @@
                 <button class="form-submit">submit</button>
             </li>
         </ul>
-    </form>
+    </form> 
     <div id="todo-card-module">
-        <button class="todo-close-btn">x</button>
         <ul id="todo-card">
-            <li class="title"></li>
-            <li class="description"></li>
-            <li class="priority"></li>
-            <li class="due-date"></li>
-            <li class="notes"></li>
+            <button class="todo-close-btn">x</button>
+            <li>
+                <label for="title">Title:</label>
+                <p class="title"></p>
+                <input class="edit-title-input" type="text" id="edit-title" name="title">
+            </li>
+            <li>
+                <label for="description">Description:</label>
+                <p class="description"></p>
+                <input class="edit-description-input" type="text" id="edit-description" name="description">
+            </li>
+            <li>
+                <label for="priority">Priority:</label>
+                <p class="priority"></p>
+                <select class="edit-priority-input" id="edit-priority" name="priority">
+                    <option class="Low">Low</option>
+                    <option class= "Medium" selected>Medium</option>
+                    <option class="High">High</option>
+                </select>
+            </li>
+            <li>
+                <label for="due-date">Due Date:</label>
+                <p class="due-date"></p>
+                <input class="edit-due-date-input" type="date" id="edit-due-date" name="due-date">
+            </li>
+            <li>
+                <label class="notes-label" for="notes">Notes:</label>
+                <p class="notes"></p>
+                <textarea class="edit-notes-input" id="edit-notes" name="notes" rows="10" cols="30"></textarea>
+            </li>
+            <li>
+                <button class="edit-form-submit">submit</button>
+            </li>
         </ul>
     </div>
     <footer>

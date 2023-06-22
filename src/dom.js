@@ -27,12 +27,28 @@ function createProjectelement(){
 }
 
 function closeFullTodo(){
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let index = tasks.findIndex((task => task.id == taskId));
+    let task = tasks[index];
     document.getElementById('todo-card-module').style.display = "none";
-    document.querySelector('.title').textContent = "";
-    document.querySelector('.description').textContent = "";
-    document.querySelector('.priority').textContent = "";
-    document.querySelector('.due-date').textContent = "";
-    document.querySelector('.notes').textContent = "";
+    document.querySelector('#edit-title').style.display = "flex";
+    document.querySelector('#edit-description').style.display = "flex";
+    document.querySelector('#edit-priority').style.display = "flex";
+    document.querySelector('#edit-due-date').style.display = "flex";
+    document.querySelector('#edit-notes').style.display = "flex";
+
+    document.querySelector('.title').style.display = "flex";
+    document.querySelector('.description').style.display = "flex";
+    document.querySelector('.priority').style.display = "flex";
+    document.querySelector('.due-date').style.display = "flex";
+    document.querySelector('.notes').style.display = "flex";
+
+    document.querySelector('#edit-title').value = task.title;
+    document.querySelector('#edit-description').value = task.description;
+    document.querySelector('#edit-due-date').value = task.dueDate;
+    document.querySelector('#edit-notes').value = task.note;
+    document.querySelector('.edit-form-submit').style.display = "flex";
+
 }
 function displayFullTodo(index){
     document.getElementById('todo-card-module').style.display = "flex";
@@ -43,6 +59,44 @@ function displayFullTodo(index){
     document.querySelector('.priority').textContent = task.priority;
     document.querySelector('.due-date').textContent = task.dueDate;
     document.querySelector('.notes').textContent = task.note;
+
+    document.querySelector('#edit-title').style.display = "none";
+    document.querySelector('#edit-description').style.display = "none";
+    document.querySelector('#edit-priority').style.display = "none";
+    document.querySelector('#edit-due-date').style.display = "none";
+    document.querySelector('#edit-notes').style.display = "none";
+    document.querySelector('.edit-form-submit').style.display = "none";
+}
+function displayEdit(index){
+    document.getElementById('todo-card-module').style.display = "flex";
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let task = tasks[index];
+    document.querySelector('#edit-title').value = task.title;
+    document.querySelector('#edit-description').value = task.description;
+
+    selectedPriority(task);
+
+    document.querySelector('#edit-due-date').value = task.dueDate;
+    document.querySelector('#edit-notes').value = task.note;
+
+    document.querySelector('.title').style.display = "none";
+    document.querySelector('.description').style.display = "none";
+    document.querySelector('.priority').style.display = "none";
+    document.querySelector('.due-date').style.display = "none";
+    document.querySelector('.notes').style.display = "none";
+}
+function selectedPriority(task){
+
+if (task.priority == "Low"){
+    document.querySelector('.Low').selected = true;
+}
+else if (task.priority == "Medium"){
+    document.querySelector('.Medium').selected = true;
+
+}
+else if (task.priority == "High"){
+    document.querySelector('.High').selected = true;
+}
 }
 
 function createToDoElement(){
@@ -124,9 +178,8 @@ function openTodo(event){
 function editTodo(event){
     let tasks = todoList.projects.at(findCurrentPage()).tasks;
     let val = changeTaskValue(event);
-    tasks.findIndex((task => task.id == val));
-
-
+    let index = tasks.findIndex((task => task.id == val));
+    displayEdit(index);
 }
 
 function loadTodos(){
@@ -165,6 +218,7 @@ function loadTodos(){
         div.appendChild(dueDate);
 
         readBtn.addEventListener('click', openTodo);
+        editBtn.addEventListener('click', editTodo);
         doneBtn.addEventListener('click', deleteTaskDom)
     
         btnDiv.appendChild(readBtn);
