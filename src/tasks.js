@@ -1,6 +1,7 @@
 import { todoList } from "./todolist";
 import { currentId } from "./ui";
 let id = 0;
+let taskId = null;
 
 function createTask(){
   let title = getTitle();
@@ -11,6 +12,17 @@ function createTask(){
   let done = false;
   id += 1;
   return {title, description, priority, dueDate, note, done, id}
+}
+//fix
+function setTask(){
+  let projId = currentId;
+  let index = todoList.projects.findIndex(proj => proj.id == projId);
+  let taskIndex = todoList.projects[index].tasks.findIndex(task => task.id ==taskId)
+  todoList.projects[index].tasks[taskIndex].title = getTitle();
+  todoList.projects[index].tasks[taskIndex].description = getDescription();
+  todoList.projects[index].tasks[taskIndex].priority = getPriority();
+  todoList.projects[index].tasks[taskIndex].dueDate = getDueDate();
+  todoList.projects[index].tasks[taskId].note = getNotes();
 }
 
 function createDefaultTask(title, description, priority, dueDate, note, done = false){
@@ -63,4 +75,4 @@ function clearData(){
   document.getElementById("due-date").value = "";
   document.getElementById("priority").value = "Medium";
 }
-export {addTask, deleteTask,createDefaultTask, createTask, clearData};
+export {addTask, deleteTask,createDefaultTask, createTask, clearData,setTask, taskId};

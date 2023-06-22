@@ -101,7 +101,7 @@ textarea{
 #add-project-div{
     text-align: center;
 }
-#pop-up-module{
+#pop-up-module, #todo-card-module{
     position: absolute;
     top:0;
     background-color: rgba(0, 0, 0, 0.6);
@@ -111,7 +111,7 @@ textarea{
     width: 100vw;
     height: 100vh;
 }
-#form-content{
+#form-content, #todo-card{
     background-color: white;
     color: black;
     width: 50vh;

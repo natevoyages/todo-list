@@ -1,6 +1,6 @@
 import { todoList} from "./todolist";
-import { findCurrentPage, changePage } from "./ui";
-import { deleteTask } from "./tasks";
+import { findCurrentPage, changePage, displayTodoList } from "./ui";
+import { deleteTask, taskId } from "./tasks";
 import { deleteProject } from "./projects";
 
 function createProjectelement(){
@@ -24,6 +24,25 @@ function createProjectelement(){
     li.addEventListener('click',changePage);
     li.addEventListener('mouseover', () => btnDiv.style.display = "flex" );
     li.addEventListener('mouseleave', () => btnDiv.style.display = "none");
+}
+
+function closeFullTodo(){
+    document.getElementById('todo-card-module').style.display = "none";
+    document.querySelector('.title').textContent = "";
+    document.querySelector('.description').textContent = "";
+    document.querySelector('.priority').textContent = "";
+    document.querySelector('.due-date').textContent = "";
+    document.querySelector('.notes').textContent = "";
+}
+function displayFullTodo(index){
+    document.getElementById('todo-card-module').style.display = "flex";
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let task = tasks[index];
+    document.querySelector('.title').textContent = task.title;
+    document.querySelector('.description').textContent = task.description;
+    document.querySelector('.priority').textContent = task.priority;
+    document.querySelector('.due-date').textContent = task.dueDate;
+    document.querySelector('.notes').textContent = task.note;
 }
 
 function createToDoElement(){
@@ -91,6 +110,25 @@ function deleteProjectDom(event){
     deleteProject(value);
 }
 
+// new functions
+function changeTaskValue(event){
+    taskId = event.target.parentNode.parentNode.getAttribute('task-value');
+    return taskId;
+}
+function openTodo(event){
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let val = changeTaskValue(event);
+    let index = tasks.findIndex((task => task.id == val));
+    displayFullTodo(index);
+}
+function editTodo(event){
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let val = changeTaskValue(event);
+    tasks.findIndex((task => task.id == val));
+
+
+}
+
 function loadTodos(){
     let tasks = todoList.projects.at(findCurrentPage()).tasks;
     tasks.forEach(task => {
@@ -126,6 +164,7 @@ function loadTodos(){
         div.appendChild(priority);
         div.appendChild(dueDate);
 
+        readBtn.addEventListener('click', openTodo);
         doneBtn.addEventListener('click', deleteTaskDom)
     
         btnDiv.appendChild(readBtn);
@@ -139,4 +178,5 @@ function loadTodos(){
 }
 
 
-export {createToDoElement, createProjectelement, changePageContent, loadTodos, deleteTaskDom};
+export {createToDoElement, createProjectelement, changePageContent, loadTodos, deleteTaskDom, 
+closeFullTodo};

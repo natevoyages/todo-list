@@ -1,4 +1,4 @@
-import { changePageContent, createProjectelement, createToDoElement, loadTodos } from "./dom";
+import { changePageContent, closeFullTodo, createProjectelement, createToDoElement, loadTodos } from "./dom";
 import { addProject } from "./projects";
 import { clearData, addTask } from "./tasks";
 import { todoList } from "./todolist";
@@ -23,6 +23,9 @@ function addInitialListeners(){
     addFormListeners();
     let addTodoBtn = document.getElementById("add-todo")
     addTodoBtn.addEventListener('click',openForm);
+
+    let closeTodobtn = document.querySelector(".todo-close-btn");
+    closeTodobtn.addEventListener('click', closeFullTodo);
 }
 
 function addFormListeners(){
