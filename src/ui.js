@@ -1,6 +1,6 @@
 import { changePageContent, closeFullTodo, createProjectelement, createToDoElement, loadTodos } from "./dom";
 import { addProject } from "./projects";
-import { clearData, addTask } from "./tasks";
+import { clearData, addTask, setTask } from "./tasks";
 import { todoList } from "./todolist";
 
 let currentPage = todoList.projects.at(0);
@@ -16,6 +16,11 @@ function findSelectedPage(selected){
   let index = todoList.projects.findIndex(proj => proj.id == selected)
   return index;
 }
+function submitTodo(event){
+  event.preventDefault();
+  setTask();
+  closeFullTodo();
+}
 
 let i = 0;
 function addInitialListeners(){
@@ -26,6 +31,9 @@ function addInitialListeners(){
 
     let closeTodobtn = document.querySelector(".todo-close-btn");
     closeTodobtn.addEventListener('click', closeFullTodo);
+
+    let editSubmit = document.querySelector(".edit-form-submit");
+    editSubmit.addEventListener('click', submitTodo);
 }
 
 function addFormListeners(){

@@ -129,7 +129,9 @@ function createToDoElement(){
     div.appendChild(title);
     div.appendChild(priority);
     div.appendChild(dueDate);
-
+    
+    readBtn.addEventListener('click', openTodo);
+    editBtn.addEventListener('click', editTodo);
     doneBtn.addEventListener('click', deleteTaskDom)
 
     btnDiv.appendChild(readBtn);

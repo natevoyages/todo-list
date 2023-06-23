@@ -13,16 +13,16 @@ function createTask(){
   id += 1;
   return {title, description, priority, dueDate, note, done, id}
 }
-//fix
+
 function setTask(){
   let projId = currentId;
   let index = todoList.projects.findIndex(proj => proj.id == projId);
   let taskIndex = todoList.projects[index].tasks.findIndex(task => task.id ==taskId)
-  todoList.projects[index].tasks[taskIndex].title = getTitle();
-  todoList.projects[index].tasks[taskIndex].description = getDescription();
-  todoList.projects[index].tasks[taskIndex].priority = getPriority();
-  todoList.projects[index].tasks[taskIndex].dueDate = getDueDate();
-  todoList.projects[index].tasks[taskId].note = getNotes();
+  todoList.projects[index].tasks[taskIndex].title = getEditTitle();
+  todoList.projects[index].tasks[taskIndex].description = getEditDescription();
+  todoList.projects[index].tasks[taskIndex].priority = getEditPriority();
+  todoList.projects[index].tasks[taskIndex].dueDate = getEditDueDate();
+  todoList.projects[index].tasks[taskIndex].note = getEditNotes();
 }
 
 function createDefaultTask(title, description, priority, dueDate, note, done = false){
@@ -65,6 +65,31 @@ function getDueDate(){
 
 function getPriority(){
   let priority = document.getElementById("priority").value;
+  return priority;
+}
+
+function getEditNotes(){
+  let notes = document.getElementById("edit-notes").value;
+  return notes;
+}
+
+function getEditTitle(){
+   let title = document.getElementById("edit-title").value;
+   return title;
+}
+
+function getEditDescription(){
+  let description = document.getElementById("edit-description").value;
+  return description;
+}
+
+function getEditDueDate(){
+  let dueDate = document.getElementById("edit-due-date").value;
+  return dueDate;
+}
+
+function getEditPriority(){
+  let priority = document.getElementById("edit-priority").value;
   return priority;
 }
 
