@@ -1,6 +1,5 @@
-import { displayTodoList, addNavBarlisteners, addInitialListeners } from "./ui";
-import { addTask, deleteTask } from "./tasks";
-import { addProject } from "./projects";
+import { addInitialListeners } from "./ui";
+
 
 
 addInitialListeners();

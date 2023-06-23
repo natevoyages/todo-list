@@ -1,4 +1,4 @@
-import { changePageContent, closeFullTodo, createProjectelement, createToDoElement, loadTodos } from "./dom";
+import { changePageContent, closeFullTodo, createProjectelement, createToDoElement, loadTodos, updateTodoElement } from "./dom";
 import { addProject } from "./projects";
 import { clearData, addTask, setTask } from "./tasks";
 import { todoList } from "./todolist";
@@ -19,6 +19,7 @@ function findSelectedPage(selected){
 function submitTodo(event){
   event.preventDefault();
   setTask();
+  updateTodoElement();
   closeFullTodo();
 }
 

@@ -126,10 +126,14 @@ function createToDoElement(){
     doneBtn.src = "../dist/icons/delete.svg";
 
 
+    title.setAttribute("class", `title-${task.id}`);
+    priority.setAttribute("class", `priority-${task.id}`);
+    dueDate.setAttribute("class", `due-date-${task.id}`);
+
     div.appendChild(title);
     div.appendChild(priority);
     div.appendChild(dueDate);
-    
+
     readBtn.addEventListener('click', openTodo);
     editBtn.addEventListener('click', editTodo);
     doneBtn.addEventListener('click', deleteTaskDom)
@@ -141,6 +145,17 @@ function createToDoElement(){
     
 
     document.getElementById("todos").appendChild(div);
+}
+
+function updateTodoElement(){
+    let tasks = todoList.projects.at(findCurrentPage()).tasks;
+    let index = tasks.findIndex(task => task.id == taskId);
+    let task = tasks.at(index);
+
+    document.querySelector(`.title-${taskId}`).innerText = "Title: " +  task.title;
+    document.querySelector(`.priority-${taskId}`).innerText  = "Priority: " + task.priority;
+    document.querySelector(`.due-date-${taskId}`).innerText  = "Date: " + task.dueDate;
+
 }
 function changePageContent(page){
     let h2 = document.getElementById('content-header');
@@ -212,8 +227,12 @@ function loadTodos(){
         readBtn.src = "../dist/icons/read.svg";
         editBtn.src = "../dist/icons/edit.svg";
         doneBtn.src = "../dist/icons/delete.svg";
-    
-    
+
+
+        title.setAttribute("class", `title-${task.id}`);
+        priority.setAttribute("class", `priority-${task.id}`);
+        dueDate.setAttribute("class", `due-date-${task.id}`);
+
         
         div.appendChild(title);
         div.appendChild(priority);
@@ -235,4 +254,4 @@ function loadTodos(){
 
 
 export {createToDoElement, createProjectelement, changePageContent, loadTodos, deleteTaskDom, 
-closeFullTodo};
+closeFullTodo, updateTodoElement};
