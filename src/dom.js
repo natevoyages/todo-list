@@ -11,7 +11,7 @@ function createProjectelement(){
     li.setAttribute('data-value', projInfo.id);
     li.style.listStyle = "none";
     document.getElementById("projects").appendChild(li);
-    console.log(projInfo);
+   
     let btnDiv = document.createElement("div");
     let doneBtn = document.createElement("img");
     doneBtn.src = "../dist/icons/delete.svg";
@@ -155,7 +155,7 @@ function updateTodoElement(){
     document.querySelector(`.title-${taskId}`).innerText = "Title: " +  task.title;
     document.querySelector(`.priority-${taskId}`).innerText  = "Priority: " + task.priority;
     document.querySelector(`.due-date-${taskId}`).innerText  = "Date: " + task.dueDate;
-
+ 
 }
 function changePageContent(page){
     let h2 = document.getElementById('content-header');
@@ -196,7 +196,7 @@ function editTodo(event){
     let tasks = todoList.projects.at(findCurrentPage()).tasks;
     let val = changeTaskValue(event);
     let index = tasks.findIndex((task => task.id == val));
-    displayEdit(index);
+    displayEdit(index); 
 }
 
 function loadTodos(){
@@ -206,7 +206,6 @@ function loadTodos(){
     
         let div = document.createElement("div");
         div.setAttribute("class", "todo");
-        console.log("task: " + task);
         div.setAttribute('task-value', task.id);
     
         let title =document.createElement("p");

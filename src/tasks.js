@@ -45,7 +45,7 @@ function deleteTask(taskId){
 
 function getNotes(){
   let notes = document.getElementById("notes").value;
-  return notes;
+  return notes; 
 }
 
 function getTitle(){

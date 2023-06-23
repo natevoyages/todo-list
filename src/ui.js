@@ -48,6 +48,7 @@ function addFormListeners(){
   submitForm();}); 
   
 }
+
 function displayTodoList()
 {
   console.log("Todo List");

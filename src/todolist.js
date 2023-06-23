@@ -17,5 +17,4 @@ const todoList = createToDoList();
 todoList.projects[2].tasks.push(createDefaultTask("Web Devloper!", "Become a Web Devloper", "High", "2023-10-23", "SOON SOOON SOOOOOOOON", false));
 createProjectelement();
 
-
 export {todoList }

@@ -10,7 +10,6 @@ function createProject(name){
 
 function addProject(){
   todoList.projects.push(createProject(getProjectName()));
-
 }
 
 function deleteProject(value){
