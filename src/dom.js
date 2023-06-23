@@ -2,6 +2,10 @@ import { todoList} from "./todolist";
 import { findCurrentPage, changePage, displayTodoList } from "./ui";
 import { deleteTask, taskId } from "./tasks";
 import { deleteProject } from "./projects";
+import read from './icons/read.svg';
+import trash from './icons/delete.svg';
+import edit from './icons/edit.svg';
+
 
 function createProjectelement(){
     let li = document.createElement("li");
@@ -121,9 +125,9 @@ function createToDoElement(){
     priority.innerText = "Priority: " + task.priority;
     dueDate.innerText = "Date: " + task.dueDate;
     done.innerText = "Done:" + task.done;
-    readBtn.src = "../dist/icons/read.svg";
-    editBtn.src = "../dist/icons/edit.svg";
-    doneBtn.src = "../dist/icons/delete.svg";
+    readBtn.src = read;
+    editBtn.src = edit;
+    doneBtn.src = trash;
 
 
     title.setAttribute("class", `title-${task.id}`);
@@ -223,9 +227,9 @@ function loadTodos(){
         priority.innerText = "Priority: " + task.priority;
         dueDate.innerText = "Date: " + task.dueDate;
         done.innerText = "Done:" + task.done;
-        readBtn.src = "../dist/icons/read.svg";
-        editBtn.src = "../dist/icons/edit.svg";
-        doneBtn.src = "../dist/icons/delete.svg";
+        readBtn.src = read;
+        editBtn.src = edit;
+        doneBtn.src = trash;
 
 
         title.setAttribute("class", `title-${task.id}`);
